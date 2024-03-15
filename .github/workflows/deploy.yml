@@ -27,6 +27,7 @@ jobs:
             - name: Commit and Push Changes
               id: commit-and-push
               run: |
+                echo $GITHUB_TOKEN
                 echo "Commit test deploy with image $DEPLOY_IMAGE" 
                 git add test
                 git config --local user.email "github-actions[bot]@users.noreply.github.com"
