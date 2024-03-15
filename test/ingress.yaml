@@ -12,7 +12,7 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: /cbs(/|$)(.*)
+        path: /api/cbs(/|$)(.*)
         backend:
           service:
             name: core-build-system-service
