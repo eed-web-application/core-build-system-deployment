@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: core-build-system-service
+spec:
+  selector:
+    app: core-build-system
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
