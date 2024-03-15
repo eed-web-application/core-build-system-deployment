@@ -11,3 +11,4 @@ resources:
 - mongodb-operator.yaml
 - mongodb-rbac.yaml
 - mongodb-secrets.yaml
+- mongodb-cr.yaml
