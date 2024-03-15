@@ -4,6 +4,7 @@ metadata:
   name: core-build-system-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/whitelist-source-range: 134.79.0.0/16,172.16.0.0/12
   labels:
     name: core-build-system-ingress
 spec:
