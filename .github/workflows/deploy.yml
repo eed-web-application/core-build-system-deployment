@@ -26,6 +26,7 @@ jobs:
                 cat test/deployment.yaml
             - name: Commit and Push Changes
               id: commit-and-push
+              continue-on-error: true
               run: |
                 echo $GITHUB_TOKEN
                 echo "Commit test deploy with image $DEPLOY_IMAGE" 
