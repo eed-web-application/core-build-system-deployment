@@ -129,7 +129,7 @@ jobs:
             id: githubAppAuth
             with:
               app-id: ${{ secrets.APP_ID }}
-              app-installation-id: ${{ secrets.INSTALLATION_ID }}
+              app-installation-id: ${{ secrets.APP_INSTALLATION_ID }}
               app-private-key: ${{ secrets.APP_PRIVATE_KEY }}
           - run: |
                 for tag in $(echo "${{ needs.build-docker-images.outputs.IMAGE_TO_DEPLOY }}" | sed "s/,/ /g")
