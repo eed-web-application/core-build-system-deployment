@@ -47,4 +47,4 @@ spec:
           initialDelaySeconds: 30
           periodSeconds: 10
       imagePullSecrets:
-      - name: github-secret
+      - name: gh-secret
