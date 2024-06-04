@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: core-build-system-webhook-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /v1/event/gh/webhook
+  labels:
+    name: core-build-system-webhook-ingress
+spec:
+  rules:
+  - host: "accel-webapp-dev.slac.stanford.edu"
+    http:
+      paths:
+      - pathType: Exact
+        path: /api/cbs/v1/event/gh/webhook
+        backend:
+          service:
+            name: core-build-system-service
+            port:
+              number: 80
