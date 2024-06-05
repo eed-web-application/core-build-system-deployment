@@ -39,6 +39,8 @@ jobs:
           run: |
             docker compose -f docker-compose.yml up -d
             sleep 5
+        - name: Start minikube
+          uses: medyagh/setup-minikube@master
         - name: Test Project
           uses: gradle/gradle-build-action@v2
           env:
