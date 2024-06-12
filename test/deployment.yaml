@@ -1,3 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: core-build-system-s3df-ad-group
+spec:
+  storageClassName: sdf-group-ad
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,6 +29,10 @@ spec:
         prometheus.io/path: '/actuator/prometheus'
         prometheus.io/port: '8080'
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 3000
+        fsGroup: 2000
       containers:
       - name: core-build-system
         imagePullPolicy: Always
@@ -46,5 +62,12 @@ spec:
             port: 8080
           initialDelaySeconds: 30
           periodSeconds: 10
+        volumeMounts:
+        - name: core-build-system-s3df-ad-group
+          mountPath: /mnt
       # imagePullSecrets:
       # - name: gh-secret
+      volumes:
+        - name: core-build-system-s3df-ad-group
+          persistentVolumeClaim:
+            claimName: core-build-system-s3df-ad-group
