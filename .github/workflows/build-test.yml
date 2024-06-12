@@ -41,6 +41,9 @@ jobs:
             sleep 5
         - name: Start minikube
           uses: medyagh/setup-minikube@master
+          with:
+            mount-path: '/tmp:/tmp/host-tmp'
+
         - name: Test Project
           uses: gradle/gradle-build-action@v2
           env:
