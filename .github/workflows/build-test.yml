@@ -42,7 +42,7 @@ jobs:
         - name: prepare minikube folder
           if: steps.check_files.outputs.files_exists == 'true'
           run: |
-            mkdir -P /tmp/host-tmp
+            mkdir -p /tmp/host-tmp
         - name: Start minikube
           uses: medyagh/setup-minikube@master
           with:
