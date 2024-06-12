@@ -21,3 +21,4 @@ data:
   CBS_BUILD_FS_ROOT_DIR: /mnt
   CBS_BUILD_SCRATCH_ROOT_DIR: cbs-build-root
   CBS_BUILD_POD_MOUNT_POINT: /mnt
+  CBS_K8S_BUILD_NAMESPACE: core-build-system
