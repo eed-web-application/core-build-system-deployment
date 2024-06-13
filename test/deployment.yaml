@@ -49,9 +49,8 @@ spec:
         prometheus.io/port: '8080'
     spec:
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 3000
-        fsGroup: 2000
+        runAsUser: 45808
+        runAsGroup: 1006
       containers:
       - name: core-build-system
         imagePullPolicy: Always
