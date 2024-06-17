@@ -18,3 +18,7 @@ data:
   SPRING_PROFILES_ACTIVE: kafka-auth,manage-root-user,init-logbook
   #root authenticaiton token
   CBS__ROOT_AUTHENTICATION_TOKEN_JSON: '[{"name":"root-token-1","expiration":"2024-12-31"}]'
+  CBS_BUILD_FS_ROOT_DIR: /mnt
+  CBS_BUILD_SCRATCH_ROOT_DIR: /eed/ad-build/scratch
+  CBS_BUILD_POD_MOUNT_POINT: /mnt
+  CBS_K8S_BUILD_NAMESPACE: core-build-system

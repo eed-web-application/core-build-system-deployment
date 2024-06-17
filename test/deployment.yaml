@@ -1,3 +1,33 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name:  core-build-system-sa
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: core-build-system-rb
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: edit
+subjects:
+  - kind: ServiceAccount
+    name: core-build-system-sa
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: core-build-system-s3df-ad-group
+spec:
+  storageClassName: sdf-group-ad
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,6 +47,9 @@ spec:
         prometheus.io/path: '/actuator/prometheus'
         prometheus.io/port: '8080'
     spec:
+      securityContext:
+        runAsUser: 45808
+        runAsGroup: 1006
       containers:
       - name: core-build-system
         imagePullPolicy: Always
@@ -46,5 +79,12 @@ spec:
             port: 8080
           initialDelaySeconds: 30
           periodSeconds: 10
+        volumeMounts:
+        - name: core-build-system-s3df-ad-group
+          mountPath: /mnt
       # imagePullSecrets:
       # - name: gh-secret
+      volumes:
+        - name: core-build-system-s3df-ad-group
+          persistentVolumeClaim:
+            claimName: core-build-system-s3df-ad-group
