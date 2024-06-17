@@ -61,6 +61,8 @@ jobs:
             mkdir -p /tmp/host-tmp
         - name: Start minikube
           uses: medyagh/setup-minikube@master
+          with:
+            mount-path: '/tmp/host-tmp:/tmp/host-tmp'
         - name: Test Project
           uses: gradle/gradle-build-action@v2
           env:
