@@ -55,6 +55,10 @@ jobs:
           run: |
             docker compose -f docker-compose.yml up -d
             sleep 5
+        - name: prepare minikube folder
+          if: steps.check_files.outputs.files_exists == 'true'
+          run: |
+            mkdir -p /tmp/host-tmp
         - name: Start minikube
           uses: medyagh/setup-minikube@master
         - name: Test Project
