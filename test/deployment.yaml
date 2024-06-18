@@ -48,7 +48,7 @@ spec:
         prometheus.io/port: '8080'
     spec:
       securityContext:
-        runAsUser: 45808
+        runAsUser: 46487
         runAsGroup: 1006
       containers:
       - name: core-build-system
