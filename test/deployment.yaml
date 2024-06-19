@@ -33,7 +33,7 @@ kind: Deployment
 metadata:
   name: core-build-system
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: core-build-system
