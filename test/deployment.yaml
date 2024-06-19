@@ -47,6 +47,7 @@ spec:
         prometheus.io/path: '/actuator/prometheus'
         prometheus.io/port: '8080'
     spec:
+      serviceAccountName: core-build-system-sa
       securityContext:
         runAsUser: 46487
         runAsGroup: 1006
@@ -63,8 +64,8 @@ spec:
             name: application-secrets
         resources:
           limits:
-            memory: 512Mi
-            cpu: "250m"
+            memory: 1Gi
+            cpu: "1000m"
         ports:
         - containerPort: 8080
         # livenessProbe:
