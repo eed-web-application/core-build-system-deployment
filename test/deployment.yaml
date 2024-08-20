@@ -54,7 +54,7 @@ spec:
       containers:
       - name: core-build-system
         imagePullPolicy: Always
-        image: ghcr.io/eed-web-application/core-build-system:sha-ff7bf3d
+        image: ghcr.io/eed-web-application/core-build-system:sha-31cc57b
         envFrom:
         - configMapRef:
             name: env-config-map
