@@ -47,11 +47,13 @@ spec:
         prometheus.io/path: '/actuator/prometheus'
         prometheus.io/port: '8080'
     spec:
+      imagePullSecrets:
+      - name: github-secret
       serviceAccountName: core-build-system-sa
       securityContext:
         runAsUser: 46487
         runAsGroup: 1006
-      containers:
+      containers:  
       - name: core-build-system
         imagePullPolicy: Always
         image: ghcr.io/eed-web-application/core-build-system:sha-632cbbd
